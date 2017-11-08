@@ -24,6 +24,19 @@ vuem
 │  
 └── Doc 开发文档  
 
+## 开发准备  
+
+```shell
+# 修改 git 地址
+git remote set-url origin [your_git_address]
+
+# 查看，确保无错
+git remote -v
+
+# 提交模板
+git push
+```
+
 ## GitLab
 
 [vue](http://gitlab.hztianque.com/f2e/vuem)项目基础模板
