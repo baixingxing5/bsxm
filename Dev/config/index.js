@@ -43,8 +43,9 @@ module.exports = {
 		assetsPublicPath: '/',
 		// 添加本地代理
 		proxyTable: {
+			// 代理到本地的 mock 文件夹   
 			'/mock': {
-				// 代理到本地的 mock 文件夹   
+				// 你首先要启动一个本地服务器
 				target: 'http://localhost:9000/vuem/Dev/static/',
 				changeOrigin: true,
 				pathRewrite: {
@@ -53,14 +54,13 @@ module.exports = {
 						'^/mock': '/mock/'
 				}
 			},
+			// 测试服务器地址   
 			'/api': {
-				// 代理到本地的 mock 文件夹   
+				// 修改为你的测试服务器地址
 				target: 'http://192.168.10.36:8080/',
 				changeOrigin: true,
 				pathRewrite: {
-						// 将 请求替换成本地 mock json
-						// /api/demo/helloworld.json => /demo/helloworld.json
-						'^/api': '/api'
+					'^/api': ''
 				}
 			}
 		},
