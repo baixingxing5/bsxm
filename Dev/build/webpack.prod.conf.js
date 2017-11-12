@@ -40,7 +40,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     // 压缩 js css
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true
       },
       sourceMap: true
     }),
