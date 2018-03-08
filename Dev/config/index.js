@@ -44,21 +44,21 @@ module.exports = {
 		// 添加本地代理
 		proxyTable: {
 			// 代理到本地的 mock 文件夹   
-			'/mock': {
-				// 你首先要启动一个本地服务器
-				target: 'http://localhost:9000/vuem/Dev/static/',
-				changeOrigin: true,
-				pathRewrite: {
-						// 将 请求替换成本地 mock json
-						// /mock/demo/helloworld.json => /demo/helloworld.json
-						'^/mock': '/mock/'
-				}
-			},
+			// '/mock': {
+			// 	// 你首先要启动一个本地服务器
+			// 	target: 'http://localhost:8080/testSystem/Dev/static/',
+			// 	changeOrigin: true,
+			// 	pathRewrite: {
+			// 			// 将 请求替换成本地 mock json
+			// 			// /mock/demo/helloworld.json => /demo/helloworld.json
+			// 			'^/mock': '/mock/'
+			// 	}
+			// },
 			// 测试服务器地址   
 			'/api': {
 				// 修改为你的测试服务器地址
-				target: 'http://192.168.10.36:8080/',
-				changeOrigin: true,
+				target: 'http://127.0.0.1:3000/',
+				changeOrigin: true,//跨域
 				pathRewrite: {
 					'^/api': ''
 				}

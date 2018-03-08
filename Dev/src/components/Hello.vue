@@ -1,62 +1,41 @@
 <template>
-	<div class="hello">
-	    <img src="../assets/logo.png">
-		<h1>{{ msg }}</h1>
-	</div>
+<div class="comapp">
+	<button @click="getJson()">点击获取数据</button>
+</div>
 </template>
 
+<style scoped>
+button{
+	border:none;
+	padding:5px 10px;
+}
+</style>
+
+
 <script>
-import axios from 'axios';
-
+import TFetch from 'tfetch'
+const http = new TFetch({
+	baseUrl: './api/',
+	conf: {
+		credentials: 'inclued'
+	}
+})
 export default {
-	name: 'hello',
-	data () {
-		return {
-			msg: ''
-		}
-	},
-	created: function() {
-		this.msg = 'vue is created!';
-
-		let url = localStorage.SERVER_ENV ? 
-			'/api/demo/helloworld.json' :
-			'/api/demo/helloworld';
-
-		// fetch 请求demo
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		'Accept': 'application/json'
-		// 	}
-		// })
-		// .then(res => res.json())
-		// .then(data => {
-		// 	this.msg = data.data.name
-		// })
-		// .catch(err => {
-		// 	console.error(err)
-		// })
-
-		// axios 请求demo
-		axios.get(url)
-			.then( res => {
-				console.log(res)
-
-				this.msg = res.data.data.name
-			})
-			.catch(err => {
-				console.log(err)
-			})
-
+name:'comapp',
+data () {
+	return {
+		
+	}
+},
+methods: {
+	getJson(){
+		http.post('/api/user/search',{},{timeout:1000})
+		.then((res) => {
+			console.log(res)
+		}).catch(e => {
+			console.log(e,'error')
+		})
 	}
 }
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-	font-weight: normal;
 }
-
-</style>
+</script>
